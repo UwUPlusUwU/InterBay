@@ -60,6 +60,15 @@
 	desc = "A withering, shifting mass of armaplas."
 	icon_state = "chaosflak"
 
+/obj/item/clothing/under/cadian
+	name = "Cadian Uniform"
+	desc = "Beige synth-fibre uniform. How droll."
+	icon_state = "cadianuniform"
+	icon = 'code/modules/40k/ss40k.dmi'
+	has_sensor = 0
+	armor = list(melee = 10, bullet = 10, laser = 10,energy = 0, bomb = 0, bio = 0, rad = 0)
+	siemens_coefficient = 0.9
+
 //WEAPONS//
 
 /obj/item/projectile/beam/lasbolt

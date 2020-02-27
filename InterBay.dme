@@ -979,6 +979,8 @@
 #include "code\js\byjax.dm"
 #include "code\js\menus.dm"
 #include "code\modules\40k\cadian.dm"
+#include "code\modules\40k\jobs.dm"
+#include "code\modules\40k\outfits.dm"
 #include "code\modules\40k\structures.dm"
 #include "code\modules\acting\acting_items.dm"
 #include "code\modules\admin\admin.dm"
