@@ -49,7 +49,7 @@
 	name = "Cadian Gloves"
 	desc = "Brown synthleather gloves that scratches your hands."
 	icon_state = "cadiangloves"
-	icon = 'code/modules/40k/ss40k.dmi
+	icon = 'code/modules/40k/ss40k.dmi'
 	force = 20
 	siemens_coefficient = 0.50
 	permeability_coefficient = 0.05
@@ -64,6 +64,10 @@
 
 /obj/item/projectile/beam/lasbolt
 	damage = 80
+
+/obj/item/projectile/beam/lasbolt/hotshot
+	damage = 90
+	armor_penetration = 70
 
 /obj/item/weapon/gun/energy/cadian
 	name = "M36 Lasgun"
@@ -84,8 +88,55 @@
 	name = "M36 Laspistol"
 	icon_state = "cadianlaspistol_right"
 	item_state = "cadianlaspistol"
-	desc = "The venerable M36 Galaxy Laspistol. Beware the commissar."
+	desc = "The venerable M36 Galaxy Laspistol. Beware the Commissar."
 	slot_flags = SLOT_BELT
 	w_class = ITEM_SIZE_SMALL
 	max_shots = 30
 	one_hand_penalty = 0
+
+/obj/item/weapon/gun/energy/cadian/pistol/hotshot
+	name = "Hotshot Laspistol"
+	desc = "The Commissar's favorite."
+	projectile_type = /obj/item/projectile/beam/lasbolt/hotshot
+
+/obj/item/weapon/cell/laspack
+	name = "Laspack"
+	desc = "Pinnacle of power storage technology, this very expensive power cell provides the best energy density reachable with conventional electrochemical cells from the earliest ages of Terra."
+	origin_tech = list(TECH_POWER = 6)
+	icon_state = "laspack"
+	item_state = "laspack"
+	maxcharge = 3000
+	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 80)
+
+
+
+/obj/item/weapon/melee/chainsword
+	name = "Chainsword"
+	desc = "Rip and tear until it is done."
+	icon = 'code/modules/40k/ss40k.dmi'
+	icon_state = "chainknife"
+	var/active = 0
+	var/active_force
+	var/active_throwforce = 70
+	var/active_sharpness = 70
+	var/active_icon_state = "chainknife_active"
+	sharp = 0
+	edge = 0
+	armor_penetration = 50
+	flags = NOBLOODY
+
+	hitsound = 'sound/weapons/blade1.ogg'
+
+/obj/item/weapon/melee/chainsword/proc/activate(mob/living/user)
+	anchored = 1
+	if(active)
+		return
+	active = 1
+	force = active_force
+	throwforce = active_throwforce
+	sharpness = active_sharpness
+	icon_state = active_icon_state
+	sharp = 1
+	edge = 1
+	slot_flags |= SLOT_DENYPOCKET
+	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
